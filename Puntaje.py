@@ -1,8 +1,6 @@
 # Ejercicio 3
 
-print("-----------------------------------------")
 print("Ejercicio 3: Puntaje Final")
-print("-----------------------------------------")
 
 print("Ingrese el numero de respuestas correctas: ")
 RC = int(input())

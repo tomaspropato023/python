@@ -1,8 +1,5 @@
 # Ejercicio 4
-
-print("-----------------------------------------")
 print("Ejercicio 4: Puntaje total de Partidos")
-print("-----------------------------------------")
 
 print("Ingrese el numero de partidos ganados: ")
 PG = int(input())

@@ -1,8 +1,6 @@
 # Ejercicio 5
 
-print("-----------------------------------------")
 print("Ejercicio 5: Micro discos")
-print("-----------------------------------------")
 
 print("Ingrese la cantidad de GB del disco duro: ")
 GB = float(input())

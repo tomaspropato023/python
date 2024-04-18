@@ -1,7 +1,5 @@
 # Decoración, nombre algoritmo
-print("-----------------------------------------")
 print("Ejercicio 1: Calcular distancia")
-print("-----------------------------------------")
 
 # Entradas
 print('Ingrese la velocidad y el tiempo de la unidad movil')

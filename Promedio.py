@@ -1,8 +1,6 @@
 # Ejercicio 2
 
-print("-----------------------------------------")
 print("Ejercicio 2: Promedio")
-print("-----------------------------------------")
 
 print("Ingrese las 3 notas del alumno N1, N2, N3")
 N1 = int(input("N1: "))
