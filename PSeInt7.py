@@ -1,0 +1,6 @@
+ninos = int(input('¿Cuantos niños van al colegio? '))
+ninas = int(input('¿Cuantas niñas van al colegio? '))
+porcentajeninos = (ninos*100)/(ninos+ninas)
+porcentajeninas = (ninas*100)/(ninas+ninos)
+print("El porcentaje de niños que van al colegio es",porcentajeninos,"%")
+print("El porcentaje de niñas que van al colegio es",porcentajeninas,"%")
