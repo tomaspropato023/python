@@ -6,5 +6,5 @@ EUR = 934.13
 
 pesoadolar = pesos / DOL
 pesoaeur = pesos / EUR
-print(pesos,"pesos equivalen a",pesoadolar,"dólares. Felicidades, es pobre")
-print(pesos,"pesos equivalen a",pesoaeur,"euros. Felicidades, es aun mas pobre")
+print(pesos,"pesos equivalen a",pesoadolar,"dólares.")
+print(pesos,"pesos equivalen a",pesoaeur,"euros.")
