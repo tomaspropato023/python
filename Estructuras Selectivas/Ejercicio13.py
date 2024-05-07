@@ -1,3 +1,5 @@
+#EJ 13 - Estructuras Selectivas
+
 velocidad1 = float(input("Ingrese la velocidad del primer vehículo: "))
 velocidad2 = float(input("Ingrese la velocidad del segundo vehículo: "))
 distancia = float(input("Ingrese la distancia que separa a los vehículos: "))
