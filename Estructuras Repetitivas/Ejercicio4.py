@@ -1,4 +1,4 @@
-#EJ 4
+#EJ 4 - Estructuras Repetitivas
 
 num = int(input("Introduzca un numero: "))
 

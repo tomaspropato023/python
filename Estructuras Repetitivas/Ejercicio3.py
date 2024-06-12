@@ -1,14 +1,12 @@
 #EJ 3 - Estructuras Repetitivas
 
-PRIM = 1
-ULTI = 1000
+PRIMERNUM = 2
+ULTINUM = 1000
 
-contador = int
-j = int
 primo = bool
 
 contador = 0
-for i in range(PRIM, ULTI):
+for i in range(PRIMERNUM, ULTINUM):
     primo = True
     j = 2
     while (i > j) and (primo == True):
@@ -19,4 +17,4 @@ for i in range(PRIM, ULTI):
     if primo == True:
         print(f"{i} es primo.")
         contador += 1
-print(f"Entre {PRIM} y {ULTI} hay {contador} numeros primos.")
+print(f"Entre {PRIMERNUM} y {ULTINUM} hay {contador} numeros primos.")
