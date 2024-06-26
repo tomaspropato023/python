@@ -1,4 +1,4 @@
-#EJ 3 - Vectores y Arreglos
+#EJ 3 - Arreglos y Matrices
 
 limiteArreglo = int(input("Ingrese el limite del arreglo: "))
 vector = []

@@ -1,4 +1,4 @@
-#EJ 2 - Vectores y Arreglos
+#EJ 2 - Arreglos y Matrices
 
 suma = 0
 media = 0
