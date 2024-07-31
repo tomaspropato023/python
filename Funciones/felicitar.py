@@ -1,5 +1,5 @@
 def felicitarGente(nombre):
-    print("Felicitaciones", nombre)
+    print(f"Felicitaciones, {nombre}")
 
 felicitarGente("Ana")
 felicitarGente("Pablo")
