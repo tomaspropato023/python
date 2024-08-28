@@ -22,7 +22,6 @@ while (i < dimension) or (indiceAlumno == -1):
         indiceAlumno = i
         promedio = ((nota1[i] + nota2[i] + nota3[i]) / 3)
     i += 1
-
 if indiceAlumno >= 0:
     print(f"El alumno {alumnoABuscar} tiene un promedio de {promedio}")
 else:   
