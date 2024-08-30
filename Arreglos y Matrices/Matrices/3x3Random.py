@@ -8,7 +8,12 @@ matriz = []
 for i in range(filas):
     matriz.append( [] )
     for j in range(columnas):
-        numero = r.randint(0, 10)
+        numero = r.randint(0, 9-1)
         matriz[i].append(numero)
 
-print(matriz)
+
+for i in matriz:
+    print("[", end=" ")
+    for j in i:
+        print(j, end=' ')
+    print("]")
