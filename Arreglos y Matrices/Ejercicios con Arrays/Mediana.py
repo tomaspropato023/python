@@ -1,7 +1,5 @@
-import statistics as st
 array = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print(st.median(array))
-"""length = len(array)
+length = len(array)
 temp = 0
 mediana = 0
 
@@ -18,4 +16,4 @@ if length % 2 == 0:
     mediana = (array[length//2 - 1] + array[length//2]) / 2
 else:
     mediana = array[length//2]
-print(mediana)"""
+print(f"La mediana es {mediana}")
