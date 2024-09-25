@@ -8,7 +8,6 @@ if (1 <= limiteArreglo) and (limiteArreglo <= 200):
         vector.append(elemento)
 else:
     print("El numero de elementos en el vector es incorreto.")
-    exit
 
 i = 0
 

@@ -11,9 +11,9 @@ while i < filas:
     registroPacientes[i][j+1] = str(input("Diagnostico: "))
     costo = int(input("Costo del tratamiento: "))
     total += costo
-    registroPacientes[i][j+2] = str(costo)
     if costo > 25000:
         costoMayor[i] = costo
+    registroPacientes[i][j+2] = str(costo)
     i+=1
 
 print(registroPacientes)
