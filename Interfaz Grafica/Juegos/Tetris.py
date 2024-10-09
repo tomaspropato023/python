@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+from tkinter import messagebox as mb
 
 # Dimensiones del tablero de juego
 ANCHO = 10  # Número de columnas del tablero
@@ -22,6 +23,9 @@ class TetrisApp:
         self.direccion = None  # Variable para controlar la dirección de movimiento de la pieza
         self.rotar = False  # Controla la rotación de las piezas
         
+        # Colores
+        self.colores = ["red", "blue", "green", "yellow", "purple", "orange", "cyan"]
+
         # Creación del canvas donde se dibujará el tablero y las piezas
         self.canvas = tk.Canvas(root, width=ANCHO * 30, height=ALTO * 30, bg="black")
         self.canvas.pack()  # Empaqueta el canvas en la ventana
@@ -51,10 +55,14 @@ class TetrisApp:
             [[1, 1, 1], [1, 0, 0]],  # L invertida
             [[1, 1, 1], [0, 0, 1]],  # L
             [[1, 1, 1], [0, 1, 0]],  # T (duplicada por error en el código original)
-            [[1, 1, 1], [0, 0, 1]]   # L (duplicada por error en el código original)
+            [[1, 1, 1], [0, 0, 1]],  # L (duplicada por error en el código original)
+            [[1, 1, 0], [0, 1, 1]],  # Z
+            [[0, 1, 1], [1, 1, 0]]   # S
         ]
         # Elegir una pieza aleatoria
         self.pieza_actual = random.choice(piezas)
+        # Color de pieza
+        self.color_actual = random.choice(self.colores)
         # Posicionar la pieza en el centro horizontal del tablero
         self.x_pieza = ANCHO // 2 - len(self.pieza_actual[0]) // 2
         # Posicionar la pieza en la parte superior del tablero
@@ -68,14 +76,14 @@ class TetrisApp:
         for y, fila in enumerate(self.tablero):
             for x, valor in enumerate(fila):
                 if valor:  # Si hay una parte de una pieza en esa posición
-                    self.canvas.create_rectangle(x * 30, y * 30, (x + 1) * 30, (y + 1) * 30, fill="blue")
+                    self.canvas.create_rectangle(x * 30, y * 30, (x + 1) * 30, (y + 1) * 30, fill=self.color_actual)
 
         # Dibujar la pieza actual que está cayendo (de color rojo)
         for y, fila in enumerate(self.pieza_actual):
             for x, valor in enumerate(fila):
                 if valor:  # Si hay una parte de la pieza en esa posición
                     self.canvas.create_rectangle((x + self.x_pieza) * 30, (y + self.y_pieza) * 30,
-                                                 (x + self.x_pieza + 1) * 30, (y + self.y_pieza + 1) * 30, fill="red")
+                                                 (x + self.x_pieza + 1) * 30, (y + self.y_pieza + 1) * 30, fill=self.color_actual)
         
     # Movimiento hacia la izquierda
     def mover_izquierda(self, event):
@@ -161,7 +169,7 @@ class TetrisApp:
 
             # Verificar si la nueva pieza puede aparecer en el tablero
             if not self.puede_mover(0, 0):  # Si no puede moverse, significa que no hay espacio
-                tk.messagebox.showinfo("Fin del Juego", "Has perdido. ¡Inténtalo de nuevo!")  # Mostrar mensaje de fin de juego
+                mb.showerror("Fin del Juego", "Has perdido. ¡Inténtalo de nuevo!")  # Mostrar mensaje de fin de juego
                 self.root.quit()  # Cerrar el juego
                 return
         # Programar la siguiente caída automática
