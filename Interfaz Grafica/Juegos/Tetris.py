@@ -22,6 +22,7 @@ class TetrisApp:
         self.timer_id = None  # Almacena el temporizador de la caída automática
         self.direccion = None  # Variable para controlar la dirección de movimiento de la pieza
         self.rotar = False  # Controla la rotación de las piezas
+        self.puntaje = 0 # Almacena el puntaje del jugador
         
         # Colores
         self.colores = ["red", "blue", "green", "yellow", "purple", "orange", "cyan"]
@@ -29,6 +30,9 @@ class TetrisApp:
         # Creación del canvas donde se dibujará el tablero y las piezas
         self.canvas = tk.Canvas(root, width=ANCHO * 30, height=ALTO * 30, bg="black")
         self.canvas.pack()  # Empaqueta el canvas en la ventana
+
+        self.label_puntaje = tk.Label(root, text=f"Puntaje: {self.puntaje}", font=("Arial", 12), bg="black", fg="white")
+        self.label_puntaje.pack()
         
         # Hacer que el canvas reciba eventos del teclado
         self.canvas.focus_set()
@@ -79,12 +83,14 @@ class TetrisApp:
                     self.canvas.create_rectangle(x * 30, y * 30, (x + 1) * 30, (y + 1) * 30, fill=self.color_actual)
 
         # Dibujar la pieza actual que está cayendo (de color rojo)
-        for y, fila in enumerate(self.pieza_actual):
+        for y, fila in enumerate(self.pieza_actual): # type: ignore
             for x, valor in enumerate(fila):
                 if valor:  # Si hay una parte de la pieza en esa posición
                     self.canvas.create_rectangle((x + self.x_pieza) * 30, (y + self.y_pieza) * 30,
                                                  (x + self.x_pieza + 1) * 30, (y + self.y_pieza + 1) * 30, fill=self.color_actual)
         
+    def actualizar_puntaje(self):
+        self.label_puntaje.config(text=f"Puntaje: {self.puntaje}")
     # Movimiento hacia la izquierda
     def mover_izquierda(self, event):
         if self.puede_mover(-1, 0):  # Verificar si la pieza puede moverse a la izquierda
@@ -106,14 +112,14 @@ class TetrisApp:
     # Rotación de la pieza
     def rotar_pieza(self, event):
         # Rotar la pieza 90 grados
-        pieza_rotada = list(zip(*reversed(self.pieza_actual)))
+        pieza_rotada = list(zip(*reversed(self.pieza_actual))) # type: ignore
         if self.puede_rotar(pieza_rotada):  # Verificar si la rotación es válida
             self.pieza_actual = pieza_rotada  # Actualizar la pieza con su nueva forma rotada
             self.actualizar_tablero()  # Redibujar el tablero
 
     # Verificación si la pieza puede moverse a una nueva posición
     def puede_mover(self, dx, dy):
-        for y, fila in enumerate(self.pieza_actual):
+        for y, fila in enumerate(self.pieza_actual): # type: ignore
             for x, valor in enumerate(fila):
                 if valor:  # Si es una parte de la pieza
                     nuevo_x = x + self.x_pieza + dx  # Nueva posición X
@@ -139,7 +145,7 @@ class TetrisApp:
 
     # Fija la pieza actual en el tablero cuando ya no puede moverse más
     def fijar_pieza(self):
-        for y, fila in enumerate(self.pieza_actual):
+        for y, fila in enumerate(self.pieza_actual): # type: ignore
             for x, valor in enumerate(fila):
                 if valor:  # Si es una parte de la pieza
                     self.tablero[y + self.y_pieza][x + self.x_pieza] = 1  # Fijar en el tablero
@@ -155,6 +161,8 @@ class TetrisApp:
         for y in filas_completas:
             del self.tablero[y]
             self.tablero.insert(0, [0] * ANCHO)  # Insertar una fila vacía al inicio
+        self.puntaje += len(filas_completas) * 100
+        self.actualizar_puntaje()
             
     # Lógica de caída automática de las piezas
     def caida_automatica(self):
@@ -169,7 +177,7 @@ class TetrisApp:
 
             # Verificar si la nueva pieza puede aparecer en el tablero
             if not self.puede_mover(0, 0):  # Si no puede moverse, significa que no hay espacio
-                mb.showerror("Fin del Juego", "Has perdido. ¡Inténtalo de nuevo!")  # Mostrar mensaje de fin de juego
+                mb.showerror("Fin del Juego", f"Has perdido. Tu puntaje final es de {self.puntaje} puntos. ¡Inténtalo de nuevo!")  # Mostrar mensaje de fin de juego
                 self.root.quit()  # Cerrar el juego
                 return
         # Programar la siguiente caída automática
